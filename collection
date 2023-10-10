@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, String> hexadecimalNumbers = new HashMap<>();
+        Random random = new Random();
+        while (hexadecimalNumbers.size() < 10) {
+            int number = random.nextInt();
+            String hexadecimalNumber = Integer.toHexString(number);
+            hexadecimalNumbers.put(hexadecimalNumber, "");
+        }
+        for (String number : hexadecimalNumbers.keySet()) {
+            System.out.println(number);
+        }
+        System.out.print("Введите номер билета: ");
+        String key = scanner.nextLine();
+        if (hexadecimalNumbers.containsKey(key)) {
+            int k = random.nextInt(10) + 1;
+            if (k % 3 == 0) {
+                System.out.println(key + " Товаров не найдено");
+            } else if (k % 3 == 1) {
+                System.out.println(key + " Напиток");
+            } else {
+                System.out.println(key + " Еда и напиток");
+            }
+        }
+        else{
+            System.out.println("Данного билета не существует");
+        }
+    }
+}
